@@ -1,0 +1,29 @@
+.flex{
+  display: flex;
+  flex-direction: column;
+}
+a,a:visited{
+  color: #ff006a;
+}
+body{
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  font-family: 'Times New Roman', Times, serif;
+}
+header{
+  align-items: center;
+  padding: 1rem 0;
+}
+h1{
+  text-align: center;
+}
+main{
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6rem;
+}
+footer{
+  align-items: center;
+}
