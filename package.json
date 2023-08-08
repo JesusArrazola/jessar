@@ -1,0 +1,25 @@
+{
+  "name": "jessar",
+  "version": "1.0.0",
+  "description": "Url shortener API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusArrazola/jessar.git"
+  },
+  "keywords": [
+    "ShortenerUrl"
+  ],
+  "author": "Jesús Arrazola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesusArrazola/jessar/issues"
+  },
+  "homepage": "https://github.com/JesusArrazola/jessar#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
