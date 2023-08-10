@@ -5,17 +5,17 @@ const globalConfig = require("../../../config");
 //ShortenController
 const shorten = require("../../controllers/shorten");
 
-router.get("/shorten", (req, res) => {
+router.get("/shorten", async (req, res) => {
   const { url } = req.query;
-  let shortCode = shorten.shorten(url);
+  let response = await shorten.shorten(url);
 
-  if (shortCode !== null) {
+  if (response.code === 200) {
     res.status(200).json({
-      shortenedUrl: `${globalConfig.domainName}/${shortCode}`,
+      shortenedUrl: `${globalConfig.domainName}/${response.shortCode}`,
     });
   } else {
-    res.status(400).json({
-      Error: "Invalid Url",
+    res.status(response.code).json({
+      Error: response.status,
     });
   }
 });

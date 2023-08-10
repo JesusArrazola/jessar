@@ -1,4 +1,6 @@
 const express = require("express");
+const db = require("./src/db/db");
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -17,6 +19,10 @@ app.get("/", (req, res) => {
 //Main
 app.get("/:code", (req, res) => {
   res.status(404).sendFile(__dirname + "/templates/404.html");
+});
+
+db.createConnection().catch((err) => {
+  console.log(err);
 });
 
 app.listen(PORT, () => {
