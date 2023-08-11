@@ -21,10 +21,7 @@ app.get("/:code", (req, res) => {
   res.status(404).sendFile(__dirname + "/templates/404.html");
 });
 
-db.createConnection().catch((err) => {
-  console.log(err);
-});
-
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await db.createConnection();
   console.log(`App listenning on ${PORT}`);
 });

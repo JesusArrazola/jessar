@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const globalConfig = require("../../../config");
 
-//ShortenController
+//Controllers
 const shorten = require("../../controllers/shorten");
+const expand = require("../../controllers/expand");
 
 router.get("/shorten", async (req, res) => {
   const { url } = req.query;
@@ -20,8 +21,16 @@ router.get("/shorten", async (req, res) => {
   }
 });
 
-router.get("/expand", (req, res) => {
-  res.send("This is the expand endpoint!");
+router.get("/expand", async (req, res) => {
+  const { code } = req.query;
+  if (code === undefined) {
+    //res.status(401).json({ error: "Arguments missing" });
+  }
+
+  let url = await expand.expand(code);
+
+  if (url !== null) res.status(200).json({ url });
+  else res.status(404).json({ error: "The code doesn't exists" });
 });
 
 module.exports = router;

@@ -1,5 +1,4 @@
-const shortLinkDB = require("../models/shortlink");
-const mongoose = require("mongoose");
+const shortLinkModel = require("../models/shortlink");
 
 const crypto = require("crypto");
 /**
@@ -38,7 +37,7 @@ const shorten = async (url) => {
   }
 
   //Guardar en la BD
-  const shortLinkInstance = new shortLinkDB({
+  const shortLinkInstance = new shortLinkModel({
     url,
     shortCode,
   });
