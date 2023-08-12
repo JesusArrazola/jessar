@@ -4,6 +4,9 @@ const db = require("./src/db/db");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+//Controllers
+const expand = require("./src/controllers/expand");
+
 //Middlewares
 app.use(express.static("templates"));
 
@@ -17,8 +20,15 @@ app.get("/", (req, res) => {
 });
 
 //Main
-app.get("/:code", (req, res) => {
-  res.status(404).sendFile(__dirname + "/templates/404.html");
+app.get("/:code", async (req, res) => {
+  const { code } = req.params;
+
+  let url = await expand.expand(code);
+  if (url !== null) {
+    res.redirect(`https://${url}`);
+  } else {
+    res.status(400).sendFile(__dirname + "/templates/404.html");
+  }
 });
 
 app.listen(PORT, async () => {
