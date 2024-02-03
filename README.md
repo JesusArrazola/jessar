@@ -70,11 +70,3 @@ Redirects to the original URL based on the provided 8-character alphanumeric cod
 
 - If an invalid URL is provided for shortening, the API will return an appropriate error message.
 - If an invalid or non-existent code is provided for expansion or redirection, the API will return an error message indicating that the URL could not be found.
-
-## Rate Limits
-
-The API has rate limiting in place to prevent abuse. Users exceeding the rate limits will receive a response with an appropriate error message.
-
-## Conclusion
-
-With the URL Shortener API, you can easily shorten, expand, and redirect URLs using simple endpoints. This can be useful for sharing long URLs in a concise manner.
